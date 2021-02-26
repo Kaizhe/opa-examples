@@ -1,0 +1,27 @@
+{
+  "kind": {
+    "kind": "Namespace",
+    "group": "",
+    "version": "v1"
+  },
+  "resource": {
+    "group": "",
+    "version": "v1",
+    "resource": "namespaces"
+  },
+  "name": "ns1",
+  "namespace": "ns1",
+  "operation": "DELETE",
+  "oldObject": null,
+  "dryRun": false,
+  "uid": "74454a92-7867-11ea-b5ef-120dd3d2e92d",
+  "userInfo": {
+    "username": "admin",
+    "uid": "admin",
+    "groups": [
+      "system:masters",
+      "system:authenticated"
+    ]
+  },
+  "object": null
+}

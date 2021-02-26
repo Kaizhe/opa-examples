@@ -1,0 +1,102 @@
+{
+  "operation": "CREATE",
+  "object": {
+    "kind": "Pod",
+    "apiVersion": "v1",
+    "metadata": {
+      "uid": "b20278ed-7856-11ea-9311-0e6ab59d04b1",
+      "creationTimestamp": "2020-04-06T22:33:53Z",
+      "annotations": {
+        "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"annotations\":{},\"name\":\"busybox\",\"namespace\":\"default\"},\"spec\":{\"containers\":[{\"command\":[\"sh\",\"-c\",\"sleep 1h\"],\"image\":\"busybox\",\"name\":\"busy\"}]}}\n",
+        "kubernetes.io/limit-ranger": "LimitRanger plugin set: cpu request for container busy"
+      },
+      "name": "busybox",
+      "namespace": "default"
+    },
+    "spec": {
+      "restartPolicy": "Always",
+      "dnsPolicy": "ClusterFirst",
+      "serviceAccount": "default",
+      "securityContext": {},
+      "schedulerName": "default-scheduler",
+      "enableServiceLinks": true,
+      "containers": [
+        {
+          "name": "busy",
+          "image": "busybox",
+          "command": [
+            "sh",
+            "-c",
+            "sleep 1h"
+          ],
+          "resources": {
+            "requests": {
+              "cpu": "100m"
+            }
+          },
+          "volumeMounts": [
+            {
+              "name": "default-token-zvk4c",
+              "readOnly": true,
+              "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+            }
+          ],
+          "terminationMessagePath": "/dev/termination-log",
+          "terminationMessagePolicy": "File",
+          "imagePullPolicy": "Always"
+        }
+      ],
+      "terminationGracePeriodSeconds": 30,
+      "serviceAccountName": "default",
+      "tolerations": [
+        {
+          "effect": "NoExecute",
+          "tolerationSeconds": 300,
+          "key": "node.kubernetes.io/not-ready",
+          "operator": "Exists"
+        },
+        {
+          "key": "node.kubernetes.io/unreachable",
+          "operator": "Exists",
+          "effect": "NoExecute",
+          "tolerationSeconds": 300
+        }
+      ],
+      "priority": 0,
+      "volumes": [
+        {
+          "secret": {
+            "secretName": "default-token-zvk4c"
+          },
+          "name": "default-token-zvk4c"
+        }
+      ]
+    },
+    "status": {
+      "phase": "Pending",
+      "qosClass": "Burstable"
+    }
+  },
+  "dryRun": false,
+  "kind": {
+    "kind": "Pod",
+    "group": "",
+    "version": "v1"
+  },
+  "resource": {
+    "group": "",
+    "version": "v1",
+    "resource": "pods"
+  },
+  "userInfo": {
+    "username": "admin",
+    "uid": "admin",
+    "groups": [
+      "system:masters",
+      "system:authenticated"
+    ]
+  },
+  "oldObject": null,
+  "uid": "b2027f68-7856-11ea-9311-0e6ab59d04b1",
+  "namespace": "default"
+}
